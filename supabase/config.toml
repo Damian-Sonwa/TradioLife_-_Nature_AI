@@ -1,0 +1,4 @@
+project_id = "bffbjhxbysxmbxykyeyo"
+
+[functions.classify-plant]
+verify_jwt = true

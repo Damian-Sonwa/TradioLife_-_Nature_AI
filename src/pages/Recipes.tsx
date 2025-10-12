@@ -8,6 +8,9 @@ import Navbar from "@/components/Navbar";
 import recipePurslane from "@/assets/recipe-purslane-salad.jpg";
 import recipePesto from "@/assets/recipe-pesto.jpg";
 import recipeDandelion from "@/assets/recipe-dandelion.jpg";
+import recipeSoup from "@/assets/recipe-soup.jpg";
+import recipeSaladBowl from "@/assets/recipe-salad-bowl.jpg";
+import recipeHealthyPlate from "@/assets/recipe-healthy-plate.jpg";
 
 interface Recipe {
   id: string;
@@ -27,6 +30,8 @@ const recipeImages: Record<string, string> = {
   "Garlic Mustard Pesto": recipePesto,
   "Dandelion Green Sauté": recipeDandelion,
 };
+
+const fallbackImages = [recipeSoup, recipeSaladBowl, recipeHealthyPlate, recipePurslane, recipePesto, recipeDandelion];
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -78,11 +83,11 @@ const Recipes = () => {
           <div className="text-center py-12">Loading recipes...</div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recipes.map((recipe) => (
+            {recipes.map((recipe, index) => (
               <Card key={recipe.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="aspect-square relative">
                   <img
-                    src={recipeImages[recipe.title] || recipePurslane}
+                    src={recipeImages[recipe.title] || fallbackImages[index % fallbackImages.length]}
                     alt={recipe.title}
                     className="w-full h-full object-cover"
                   />

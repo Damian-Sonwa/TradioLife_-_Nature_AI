@@ -4,6 +4,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Camera, Map, BookOpen, Shield } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import heroImage from "@/assets/hero-forest.jpg";
+import plantVariety1 from "@/assets/plant-variety-1.jpg";
+import plantVariety2 from "@/assets/plant-variety-2.jpg";
+import plantVariety3 from "@/assets/plant-variety-3.jpg";
+import plantVariety4 from "@/assets/plant-variety-4.jpg";
 
 const Index = () => {
   return (
@@ -37,6 +41,64 @@ const Index = () => {
               <Button asChild size="lg" variant="secondary" className="text-lg">
                 <Link to="/auth">Learn More</Link>
               </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Plant Gallery Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4 text-foreground">
+            Discover Plant Varieties
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            From vibrant wildflowers to edible native plants, explore the biodiversity around you
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <img 
+                src={plantVariety1} 
+                alt="Wild purple flowers in natural habitat" 
+                className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                <p className="text-white font-semibold">Wildflower Meadow</p>
+              </div>
+            </div>
+            
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <img 
+                src={plantVariety2} 
+                alt="Green leafy native plants" 
+                className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                <p className="text-white font-semibold">Edible Greens</p>
+              </div>
+            </div>
+            
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <img 
+                src={plantVariety3} 
+                alt="Diverse forest undergrowth plants" 
+                className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                <p className="text-white font-semibold">Forest Flora</p>
+              </div>
+            </div>
+            
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <img 
+                src={plantVariety4} 
+                alt="Native herbs and medicinal plants" 
+                className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                <p className="text-white font-semibold">Medicinal Herbs</p>
+              </div>
             </div>
           </div>
         </div>

@@ -75,22 +75,25 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated Background */}
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
+      {/* Animated Flipping Background with Dark Blur */}
       {backgrounds.map((bg, index) => (
         <div
           key={index}
-          className="absolute inset-0 transition-opacity duration-1000"
+          className="absolute inset-0 transition-all duration-1000 ease-in-out"
           style={{
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            opacity: bgIndex === index ? 0.3 : 0,
+            opacity: bgIndex === index ? 1 : 0,
+            filter: "blur(8px) brightness(0.3)",
+            transform: bgIndex === index ? "scale(1.1)" : "scale(1)",
           }}
         />
       ))}
       
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-sm" />
+      {/* Additional dark overlay */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
       <Card className="w-full max-w-md mx-4 relative z-10 shadow-xl">
         <CardHeader className="text-center">

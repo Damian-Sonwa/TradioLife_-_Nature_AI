@@ -67,7 +67,7 @@ It combines **AI classification**, **geolocation reporting**, **recipe explorati
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/floraguard.git
+(https://github.com/Damian-Sonwa/flora-guard-gather.git)
 cd floraguard
 ```
 

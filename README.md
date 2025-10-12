@@ -1,73 +1,139 @@
-# Welcome to your Lovable project
+# 🌿 FloraGuard: AI-Powered Invasive Species & Edible Plant Detector
 
-## Project info
+FloraGuard is an **AI-driven environmental app** designed to identify plants from photos, detect **invasive species**, and suggest **sustainable recipes** using native edible plants.
 
-**URL**: https://lovable.dev/projects/95c709ef-b016-4f7c-9140-98ae7bbed8b1
+It combines **AI classification**, **geolocation reporting**, **recipe exploration**, and **data visualization** — all wrapped in a beautiful, nature-inspired design.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🖼️ App Preview
 
-**Use Lovable**
+- Animated **flipping background** on the login and signup pages 🌄  
+- Upload a photo → Get instant species identification  
+- View invasive species reports on an interactive map 🗺️  
+- Discover chef-curated recipes for edible native plants 🥗  
+- Track biodiversity trends via a visual dashboard 📊  
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/95c709ef-b016-4f7c-9140-98ae7bbed8b1) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## ⚙️ Tech Stack
 
-**Use your preferred IDE**
+| Layer | Technology |
+|-------|-------------|
+| **Frontend** | React.js (Vite / Next.js) + TailwindCSS + Axios |
+| **Backend** | FastAPI (Python) |
+| **Database** | PostgreSQL / SQLite |
+| **AI Model (Mock)** | EfficientNet / ResNet (PyTorch / TensorFlow-ready) |
+| **Map Integration** | Leaflet.js / Mapbox |
+| **Authentication** | JWT-based Auth |
+| **Deployment** | Docker + Heroku / GCP (Free Tier) |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Features
 
-Follow these steps:
+### 🧠 AI Plant Classifier
+- Upload or capture plant images.  
+- Identifies species using an AI model.  
+- Displays:
+  - Name
+  - Classification (Invasive / Edible / Unknown)
+  - Confidence score
+  - Description  
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 🌍 Invasive Species Reporting
+- Report invasive plant sightings.  
+- Auto-detects location via GPS.  
+- Stores in backend with coordinates & timestamp.  
+- View sightings on **interactive map with clustering & heatmap overlays**.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 🥬 Edible Plant Recipes
+- Suggests safe, eco-friendly dishes made from edible native plants.  
+- Displays recipe name, image, ingredients, steps, and tips.  
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 🧭 Dashboard & Analytics
+- Map of reported invasive species.  
+- Time-series chart showing reporting activity.  
+- Table of species name, date, and location.  
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### 💫 Authentication (with Animation)
+- Secure login/signup with JWT.  
+- **Flipping background image animation** with smooth transitions.  
+- Fully responsive and mobile-ready.
+
+---
+
+## ⚡ Setup Instructions
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/floraguard.git
+cd floraguard
+```
+
+### 2. Backend Setup (FastAPI)
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # (Windows: venv\Scripts\activate)
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+### 3. Frontend Setup (React)
+```bash
+cd frontend
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### 4. Environment Variables
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+**Backend `.env`:**
+```
+DATABASE_URL=sqlite:///./floraguard.db
+SECRET_KEY=your_jwt_secret
+```
 
-**Use GitHub Codespaces**
+**Frontend `.env`:**
+```
+VITE_API_URL=http://127.0.0.1:8000
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 🧪 Testing the App
 
-This project is built with:
+1. Sign up or log in.  
+2. Upload a plant image.  
+3. Get identification result.  
+4. Report if invasive / view on map.  
+5. Explore edible plant recipes.  
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 🐞 Troubleshooting
 
-Simply open [Lovable](https://lovable.dev/projects/95c709ef-b016-4f7c-9140-98ae7bbed8b1) and click on Share -> Publish.
+- **CORS Error:** Add CORS middleware in FastAPI.  
+- **Image Upload Fails:** Ensure `/uploads` exists.  
+- **Blank Map:** Check Mapbox token and console logs.  
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 🌍 Future Enhancements
+- Integrate live satellite vegetation data.  
+- Add multilingual support.  
+- Enable offline mode.  
+- Add community leaderboard.  
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 👩🏾‍💻 Credits
+**Team:** Madu Damian & AI Assistants  
+**Built with:** MGX + FastAPI + React  
+**Inspiration:** Google Lens × PlantNet × Calm App  
+
+---
+
+## 🪴 License
+MIT License © 2025 FloraGuard Developers

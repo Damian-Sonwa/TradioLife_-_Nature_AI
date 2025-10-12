@@ -8,6 +8,7 @@ import { MapPin, AlertTriangle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
+import MapboxMap from "@/components/MapboxMap";
 
 interface Report {
   id: string;
@@ -28,6 +29,7 @@ const Map = () => {
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(false);
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [mapboxToken, setMapboxToken] = useState("");
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -39,6 +41,7 @@ const Map = () => {
       }
       setUser(session.user);
       loadReports();
+      loadMapboxToken();
       
       if (searchParams.get("report") === "true") {
         setShowReportForm(true);
@@ -46,6 +49,18 @@ const Map = () => {
       }
     });
   }, [navigate, searchParams]);
+
+  const loadMapboxToken = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('get-mapbox-token');
+      if (error) throw error;
+      if (data?.token) {
+        setMapboxToken(data.token);
+      }
+    } catch (error) {
+      console.error("Error loading Mapbox token:", error);
+    }
+  };
 
   const loadReports = async () => {
     try {
@@ -132,7 +147,7 @@ const Map = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Map Placeholder */}
+          {/* Map */}
           <div className="lg:col-span-2">
             <Card>
               <CardHeader>
@@ -140,17 +155,28 @@ const Map = () => {
                 <CardDescription>Interactive map showing reported invasive species</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-                    <p className="text-muted-foreground">
-                      Map integration coming soon
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-2">
-                      {reports.length} sightings reported
-                    </p>
+                {mapboxToken ? (
+                  <MapboxMap reports={reports} mapboxToken={mapboxToken} />
+                ) : (
+                  <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                    <div className="text-center space-y-4">
+                      <MapPin className="h-16 w-16 mx-auto text-muted-foreground" />
+                      <div>
+                        <p className="text-muted-foreground mb-2">Enter your Mapbox token to view the map</p>
+                        <Input
+                          type="text"
+                          placeholder="pk.eyJ1..."
+                          value={mapboxToken}
+                          onChange={(e) => setMapboxToken(e.target.value)}
+                          className="max-w-md mx-auto"
+                        />
+                        <p className="text-xs text-muted-foreground mt-2">
+                          Get your token from <a href="https://mapbox.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">mapbox.com</a>
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
               </CardContent>
             </Card>
           </div>

@@ -103,7 +103,7 @@ const Auth = () => {
             </div>
           </div>
           <CardTitle className="text-3xl font-bold">
-            {isLogin ? "Welcome Back" : "Join FloraGuard"}
+            {isLogin ? "Welcome Back" : "Join TradioLife"}
           </CardTitle>
           <CardDescription>
             {isLogin

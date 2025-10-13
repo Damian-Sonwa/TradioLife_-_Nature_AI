@@ -1,6 +1,6 @@
-# 🌿 FloraGuard: AI-Powered Invasive Species & Edible Plant Detector
+# 🌿 TradioLife: AI-Powered Invasive Species & Edible Plant Detector
 
-FloraGuard is an **AI-driven environmental app** designed to identify plants from photos, detect **invasive species**, and suggest **sustainable recipes** using native edible plants.
+TradioLife is an **AI-driven environmental app** designed to identify plants from photos, detect **invasive species**, and suggest **sustainable recipes** using native edible plants.
 
 It combines **AI classification**, **geolocation reporting**, **recipe exploration**, and **data visualization** — all wrapped in a beautiful, nature-inspired design.
 
@@ -68,7 +68,7 @@ It combines **AI classification**, **geolocation reporting**, **recipe explorati
 ### 1. Clone the Repository
 ```bash
 (https://github.com/Damian-Sonwa/flora-guard-gather.git)
-cd floraguard
+cd tradiolife
 ```
 
 ### 2. Backend Setup (FastAPI)
@@ -91,7 +91,7 @@ npm run dev
 
 **Backend `.env`:**
 ```
-DATABASE_URL=sqlite:///./floraguard.db
+DATABASE_URL=sqlite:///./tradiolife.db
 SECRET_KEY=your_jwt_secret
 ```
 
@@ -136,4 +136,4 @@ VITE_API_URL=http://127.0.0.1:8000
 ---
 
 ## 🪴 License
-MIT License © 2025 FloraGuard Developers
+MIT License © 2025 TradioLife Developers

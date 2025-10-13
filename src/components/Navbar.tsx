@@ -35,7 +35,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 text-primary font-bold text-xl">
             <Leaf className="h-6 w-6" />
-            <span>FloraGuard</span>
+            <span>TradioLife</span>
           </Link>
 
           {/* Desktop Menu */}

@@ -181,7 +181,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-8">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2025 FloraGuard. Protecting ecosystems through technology.</p>
+          <p>&copy; 2025 TradioLife. Protecting ecosystems through technology.</p>
         </div>
       </footer>
     </div>

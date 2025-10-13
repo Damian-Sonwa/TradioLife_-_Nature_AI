@@ -137,3 +137,4 @@ VITE_API_URL=http://127.0.0.1:8000
 
 ## 🪴 License
 MIT License © 2025 TradioLife Developers
+APP URL: https://tradiolife-regen.netlify.app/

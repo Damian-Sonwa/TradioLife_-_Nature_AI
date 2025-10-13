@@ -7,7 +7,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   server: {
     allowedHosts:
-    ['tradiolife-nature-ai.onrender.com']
+    ["tradiolife-nature-ai.onrender.com"]
     port: 8080,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),

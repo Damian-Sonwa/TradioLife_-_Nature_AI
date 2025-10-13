@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Leaf, Menu, X, LogOut, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { User as SupabaseUser } from "@supabase/supabase-js";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,6 +55,7 @@ const Navbar = () => {
                 <Link to="/map" className="text-foreground hover:text-primary transition-colors">
                   Map
                 </Link>
+                <ThemeToggle />
                 <Button variant="ghost" size="sm" onClick={handleLogout}>
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout
@@ -64,6 +66,7 @@ const Navbar = () => {
                 <Link to="/auth" className="text-foreground hover:text-primary transition-colors">
                   Features
                 </Link>
+                <ThemeToggle />
                 <Button asChild>
                   <Link to="/auth">Get Started</Link>
                 </Button>
@@ -72,13 +75,16 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}

@@ -5,17 +5,21 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  server: {
+    // Bind to all network interfaces for cloud hosting
+    host: "0.0.0.0",
+    port: 8080,
+    // Optional: allow your deployed URL for dev server CORS issues
+    allowedHosts: ["your-app.onrender.com", "localhost"],
+  },
+  plugins: [
+    react(),
+    mode === "development" && componentTagger()
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-  },
-  // Dev server settings (only used when running `npm run dev`)
-  server: {
-    // Optional: allow your local dev hostname or Render preview URL if testing dev server
-    allowedHosts: ["localhost"],
-    ...(mode === "development" && { port: 8080 }),
   },
 }));
 

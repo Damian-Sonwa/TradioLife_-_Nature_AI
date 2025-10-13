@@ -4,15 +4,18 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-server: {
-  allowedHosts: ['tradiolife-nature-ai.onrender.com'], // ← comma here
-  port: 8080,
-},
-
+export default defineConfig(({ mode }) => ({
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Dev server settings (only used when running `npm run dev`)
+  server: {
+    // Optional: allow your local dev hostname or Render preview URL if testing dev server
+    allowedHosts: ["localhost"],
+    ...(mode === "development" && { port: 8080 }),
+  },
 }));
+

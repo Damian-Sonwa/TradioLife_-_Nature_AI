@@ -1,3 +1,4 @@
+// Resolved vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { componentTagger } from "lovable-tagger";
@@ -22,3 +23,4 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
+

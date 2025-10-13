@@ -47,25 +47,24 @@ const Recipes = () => {
       loadRecipes();
     });
   }, [navigate]);
+const loadRecipes = async () => {
+  try {
+    const { data, error } = await supabase
+      .from("recipes")
+      .select(`
+        *,
+        species!recipes_species_id_fkey(name)
+      `)
+      .order("created_at", { ascending: false });
 
-  const loadRecipes = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("recipes")
-        .select(`
-          *,
-          species (name)
-        `)
-        .order("created_at", { ascending: false });
-
-      if (error) throw error;
-      setRecipes(data || []);
-    } catch (error) {
-      console.error("Error loading recipes:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    if (error) throw error;
+    setRecipes(data || []);
+  } catch (error) {
+    console.error("Error loading recipes:", error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-background">

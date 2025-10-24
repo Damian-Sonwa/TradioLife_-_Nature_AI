@@ -20,13 +20,15 @@ It combines **AI classification**, **geolocation reporting**, **recipe explorati
 
 | Layer | Technology |
 |-------|-------------|
-| **Frontend** | React.js (Vite / Next.js) + TailwindCSS + Axios |
-| **Backend** | FastAPI (Python) |
-| **Database** | PostgreSQL / SQLite |
-| **AI Model (Mock)** | EfficientNet / ResNet (PyTorch / TensorFlow-ready) |
-| **Map Integration** | Leaflet.js / Mapbox |
-| **Authentication** | JWT-based Auth |
-| **Deployment** | Docker + Heroku / GCP (Free Tier) |
+| **Frontend** | React + TypeScript + Vite + TailwindCSS |
+| **UI Components** | Shadcn/ui + Radix UI |
+| **Backend** | Supabase (PostgreSQL + Edge Functions) |
+| **Database** | Supabase PostgreSQL with Row Level Security |
+| **Storage** | Supabase Storage for plant images |
+| **AI Classification** | Supabase Edge Functions (Deno) |
+| **Map Integration** | Mapbox GL JS |
+| **Authentication** | Supabase Auth (JWT-based) |
+| **Deployment** | Netlify (Frontend) + Supabase (Backend) |
 
 ---
 
@@ -65,40 +67,49 @@ It combines **AI classification**, **geolocation reporting**, **recipe explorati
 
 ## ⚡ Setup Instructions
 
-### 1. Clone the Repository
-```bash
-(https://github.com/Damian-Sonwa/flora-guard-gather.git)
-cd tradiolife
-```
+### 🚨 IMPORTANT: Issues Fixed!
+This project had several critical issues that have been **fixed**:
+- ✅ Missing environment configuration
+- ✅ Storage bucket permissions 
+- ✅ Map not visible
+- ✅ AI plant identification errors
 
-### 2. Backend Setup (FastAPI)
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # (Windows: venv\Scripts\activate)
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
+**📖 See [FIXES_SUMMARY.md](./FIXES_SUMMARY.md) for details on what was fixed.**
 
-### 3. Frontend Setup (React)
+**📘 See [SETUP.md](./SETUP.md) for complete setup instructions.**
+
+### Quick Start
+
+1. **Install Dependencies**
 ```bash
-cd frontend
 npm install
+```
+
+2. **Configure Environment Variables**
+```bash
+# Edit .env.local with your credentials (file already created)
+# Required:
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Optional (for map):
+VITE_MAPBOX_TOKEN=your_mapbox_token
+```
+
+3. **Apply Database Migrations**
+```bash
+# Using Supabase CLI
+supabase db push
+
+# OR manually run SQL files in supabase/migrations/ in your Supabase dashboard
+```
+
+4. **Run the App**
+```bash
 npm run dev
 ```
 
-### 4. Environment Variables
-
-**Backend `.env`:**
-```
-DATABASE_URL=sqlite:///./tradiolife.db
-SECRET_KEY=your_jwt_secret
-```
-
-**Frontend `.env`:**
-```
-VITE_API_URL=http://127.0.0.1:8000
-```
+**For detailed setup instructions, see [SETUP.md](./SETUP.md)**
 
 ---
 
@@ -114,9 +125,12 @@ VITE_API_URL=http://127.0.0.1:8000
 
 ## 🐞 Troubleshooting
 
-- **CORS Error:** Add CORS middleware in FastAPI.  
-- **Image Upload Fails:** Ensure `/uploads` exists.  
-- **Blank Map:** Check Mapbox token and console logs.  
+- **Missing Supabase Config:** Edit `.env.local` with your Supabase credentials
+- **Map Not Showing:** Add `VITE_MAPBOX_TOKEN` to `.env.local`
+- **Image Upload Fails:** Run storage bucket migration in `supabase/migrations/20251024_fix_storage_bucket.sql`
+- **Authentication Issues:** Check Supabase project status and credentials
+
+**See [SETUP.md](./SETUP.md#-troubleshooting) for detailed troubleshooting guide.**  
 
 ---
 

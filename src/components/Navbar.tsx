@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Leaf, Menu, X, LogOut, User } from "lucide-react";
+import { Leaf, Menu, X, LogOut, User, BookOpen, Calendar, Trophy, Heart } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { User as SupabaseUser } from "@supabase/supabase-js";
 import { ThemeToggle } from "./ThemeToggle";
@@ -31,39 +31,52 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10 shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2 text-primary font-bold text-xl">
-            <Leaf className="h-6 w-6" />
-            <span>TradioLife</span>
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="p-2 bg-gradient-to-br from-primary to-accent rounded-lg group-hover:scale-110 transition-transform shadow-lg">
+              <Leaf className="h-5 w-5 text-white" />
+            </div>
+            <span className="font-bold text-xl gradient-text">TradioLife</span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-1">
             {user ? (
               <>
-                <Link to="/dashboard" className="text-foreground hover:text-primary transition-colors">
+                <Link to="/dashboard" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
                   Dashboard
                 </Link>
-                <Link to="/identify" className="text-foreground hover:text-primary transition-colors">
-                  Identify Plant
+                <Link to="/identify" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
+                  Identify
                 </Link>
-                <Link to="/recipes" className="text-foreground hover:text-primary transition-colors">
+                <Link to="/journal" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
+                  Journal
+                </Link>
+                <Link to="/seasonal" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
+                  Seasonal
+                </Link>
+                <Link to="/challenges" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
+                  Challenges
+                </Link>
+                <Link to="/recipes" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
                   Recipes
                 </Link>
-                <Link to="/map" className="text-foreground hover:text-primary transition-colors">
+                <Link to="/map" className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
                   Map
                 </Link>
-                <ThemeToggle />
-                <Button variant="ghost" size="sm" onClick={handleLogout}>
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Logout
-                </Button>
+                <div className="ml-2 flex items-center gap-2">
+                  <ThemeToggle />
+                  <Button variant="ghost" size="sm" onClick={handleLogout} className="hover-lift">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </Button>
+                </div>
               </>
             ) : (
               <>
-                <Link to="/auth" className="text-foreground hover:text-primary transition-colors">
+                <Link to="/auth" className="px-4 py-2 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
                   Features
                 </Link>
                 <ThemeToggle />
@@ -75,7 +88,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
               className="p-2"
@@ -87,50 +100,95 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Enhanced */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 space-y-3">
+          <div className="lg:hidden py-4 space-y-2 animate-slide-up">
             {user ? (
               <>
                 <Link
                   to="/dashboard"
-                  className="block py-2 text-foreground hover:text-primary transition-colors"
+                  className="flex items-center gap-3 px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
+                  <User className="h-5 w-5" />
                   Dashboard
                 </Link>
                 <Link
                   to="/identify"
-                  className="block py-2 text-foreground hover:text-primary transition-colors"
+                  className="flex items-center gap-3 px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
+                  <Leaf className="h-5 w-5" />
                   Identify Plant
                 </Link>
                 <Link
-                  to="/recipes"
-                  className="block py-2 text-foreground hover:text-primary transition-colors"
+                  to="/journal"
+                  className="flex items-center gap-3 px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
+                  <BookOpen className="h-5 w-5" />
+                  Plant Journal
+                </Link>
+                <Link
+                  to="/seasonal"
+                  className="flex items-center gap-3 px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Calendar className="h-5 w-5" />
+                  Seasonal Finder
+                </Link>
+                <Link
+                  to="/challenges"
+                  className="flex items-center gap-3 px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Trophy className="h-5 w-5" />
+                  Challenges
+                </Link>
+                <Link
+                  to="/recipes"
+                  className="flex items-center gap-3 px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <BookOpen className="h-5 w-5" />
                   Recipes
                 </Link>
                 <Link
-                  to="/map"
-                  className="block py-2 text-foreground hover:text-primary transition-colors"
+                  to="/care-guide"
+                  className="flex items-center gap-3 px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
+                  <Heart className="h-5 w-5" />
+                  Care Guide
+                </Link>
+                <Link
+                  to="/map"
+                  className="flex items-center gap-3 px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Menu className="h-5 w-5" />
                   Map
                 </Link>
-                <Button variant="ghost" size="sm" onClick={handleLogout} className="w-full justify-start">
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Logout
-                </Button>
+                <div className="pt-2 mt-2 border-t border-border">
+                  <Button 
+                    variant="ghost" 
+                    size="lg" 
+                    onClick={handleLogout} 
+                    className="w-full justify-start hover:bg-destructive/10 hover:text-destructive"
+                  >
+                    <LogOut className="h-5 w-5 mr-3" />
+                    Logout
+                  </Button>
+                </div>
               </>
             ) : (
-              <Button asChild className="w-full">
-                <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
-                  Get Started
-                </Link>
-              </Button>
+              <div className="space-y-2">
+                <Button asChild className="w-full" size="lg">
+                  <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                    Get Started
+                  </Link>
+                </Button>
+              </div>
             )}
           </div>
         )}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Camera, Map, BookOpen, AlertTriangle, Trophy, Star, Flame, TrendingUp } from "lucide-react";
+import { Camera, Map, BookOpen, AlertTriangle, Trophy, Star, Flame, TrendingUp, Leaf } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
@@ -129,7 +129,88 @@ const Dashboard = () => {
 
   if (!user) return null;
 
-  return <div className="grid lg:grid-cols-2 gap-8 mb-8">
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      
+      <div className="container mx-auto px-4 pt-24 pb-12">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-foreground mb-2">Dashboard</h1>
+          <p className="text-muted-foreground">Welcome back! Here's your conservation overview</p>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid md:grid-cols-4 gap-4 mb-8">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="text-center">
+                <Camera className="h-8 w-8 mx-auto mb-2 text-primary" />
+                <p className="text-3xl font-bold text-foreground">{stats.reports}</p>
+                <p className="text-sm text-muted-foreground">Reports</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="pt-6">
+              <div className="text-center">
+                <Leaf className="h-8 w-8 mx-auto mb-2 text-green-500" />
+                <p className="text-3xl font-bold text-foreground">{stats.species}</p>
+                <p className="text-sm text-muted-foreground">Species Tracked</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="pt-6">
+              <div className="text-center">
+                <BookOpen className="h-8 w-8 mx-auto mb-2 text-blue-500" />
+                <p className="text-3xl font-bold text-foreground">{stats.recipes}</p>
+                <p className="text-sm text-muted-foreground">Recipes Available</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gradient-to-r from-primary/10 to-accent/10">
+            <CardContent className="pt-6">
+              <div className="text-center">
+                <Star className="h-8 w-8 mx-auto mb-2 text-primary" />
+                <p className="text-3xl font-bold text-foreground">
+                  {userStats ? userStats.total_points : 0}
+                </p>
+                <p className="text-sm text-muted-foreground">Total Points</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Level Progress */}
+        {userStats && (
+          <Card className="mb-8">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center gap-2">
+                  <Trophy className="h-5 w-5 text-primary" />
+                  Level {userStats.level} Conservationist
+                </CardTitle>
+                <Badge variant="secondary">
+                  {userStats.streak_days} Day Streak 🔥
+                </Badge>
+              </div>
+              <CardDescription>
+                {levelProgress}% progress to Level {userStats.level + 1}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Progress value={levelProgress} className="h-3" />
+              <p className="text-sm text-muted-foreground mt-2">
+                {nextLevelPoints - (userStats.total_points % 100)} points until next level
+              </p>
+            </CardContent>
+          </Card>
+        )}
+
+<div className="grid lg:grid-cols-2 gap-8 mb-8">
   {/* Activity Chart */}
   <Card>
     <CardHeader>
@@ -258,4 +339,9 @@ const Dashboard = () => {
     </CardContent>
   </Card>
 </div>
-}
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;

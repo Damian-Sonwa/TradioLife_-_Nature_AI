@@ -52,13 +52,26 @@ const Map = () => {
 
   const loadMapboxToken = async () => {
     try {
+      // First, try to get token from environment variable
+      const envToken = import.meta.env.VITE_MAPBOX_TOKEN;
+      if (envToken) {
+        setMapboxToken(envToken);
+        return;
+      }
+
+      // If not in env, try to fetch from edge function
       const { data, error } = await supabase.functions.invoke('get-mapbox-token');
-      if (error) throw error;
+      if (error) {
+        console.error("Error loading Mapbox token from edge function:", error);
+        toast.error("Mapbox token not configured. Please add VITE_MAPBOX_TOKEN to your .env.local file or MAPBOX_PUBLIC_TOKEN to Supabase Edge Function Secrets.");
+        return;
+      }
       if (data?.token) {
         setMapboxToken(data.token);
       }
     } catch (error) {
       console.error("Error loading Mapbox token:", error);
+      toast.error("Failed to load Mapbox configuration. Check console for details.");
     }
   };
 

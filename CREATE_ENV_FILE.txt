@@ -1,0 +1,23 @@
+===================================
+IMPORTANT: Create .env.local File
+===================================
+
+Please copy the text below into a new file named ".env.local" in the root directory:
+
+---COPY EVERYTHING BELOW THIS LINE---
+
+VITE_SUPABASE_URL=https://otujqzorryqtszcqboih.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90dWpxem9ycnlxdHN6Y3Fib2loIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAyMTE5OTYsImV4cCI6MjA3NTc4Nzk5Nn0.g4lRJmthcZ0fSB0RAAFx_aApcun4At00H2jDzIUPWXo
+
+---END COPY---
+
+Steps:
+1. Create a new file in the root directory
+2. Name it exactly: .env.local
+3. Paste the content above
+4. Save the file
+5. Restart the development server
+
+Alternative command to create file:
+PowerShell: echo 'VITE_SUPABASE_URL=https://otujqzorryqtszcqboih.supabase.co' > .env.local; echo 'VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90dWpxem9ycnlxdHN6Y3Fib2loIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAyMTE5OTYsImV4cCI6MjA3NTc4Nzk5Nn0.g4lRJmthcZ0fSB0RAAFx_aApcun4At00H2jDzIUPWXo' >> .env.local
+

@@ -110,27 +110,231 @@ const Index = () => {
               <Leaf className="w-4 h-4 text-green-300" />
             </motion.div>
 
-            {/* Main heading with staggered animation */}
+            {/* Main heading with staggered animation and text movement */}
             <div className="space-y-4">
               <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0,
+                }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.5,
+                  type: "spring",
+                  stiffness: 100
+                }}
                 className="text-6xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tight"
               >
-                Protect Our
+                <motion.span
+                  animate={{ 
+                    y: [0, -10, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="inline-block"
+                >
+                  Protect
+                </motion.span>{" "}
+                <motion.span
+                  animate={{ 
+                    y: [0, -10, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.2
+                  }}
+                  className="inline-block"
+                >
+                  Our
+                </motion.span>
               </motion.h1>
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
+                initial={{ opacity: 0, scale: 0.8, x: 50 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.7,
+                  type: "spring",
+                  stiffness: 100
+                }}
                 className="relative inline-block"
               >
-                <h1 className="text-6xl md:text-7xl lg:text-9xl font-black leading-tight tracking-tight bg-gradient-to-r from-lime-300 via-green-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-2xl">
-                  Ecosystems
-                </h1>
+                <motion.h1 
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  className="text-6xl md:text-7xl lg:text-9xl font-black leading-tight tracking-tight"
+                  style={{
+                    backgroundImage: "linear-gradient(90deg, #bef264, #4ade80, #10b981, #4ade80, #bef264)",
+                    backgroundSize: "200% 100%",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  <motion.span
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotateZ: [0, 2, -2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="inline-block"
+                  >
+                    E
+                  </motion.span>
+                  <motion.span
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotateZ: [0, -2, 2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.1
+                    }}
+                    className="inline-block"
+                  >
+                    c
+                  </motion.span>
+                  <motion.span
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotateZ: [0, 2, -2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.2
+                    }}
+                    className="inline-block"
+                  >
+                    o
+                  </motion.span>
+                  <motion.span
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotateZ: [0, -2, 2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.3
+                    }}
+                    className="inline-block"
+                  >
+                    s
+                  </motion.span>
+                  <motion.span
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotateZ: [0, 2, -2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.4
+                    }}
+                    className="inline-block"
+                  >
+                    y
+                  </motion.span>
+                  <motion.span
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotateZ: [0, -2, 2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5
+                    }}
+                    className="inline-block"
+                  >
+                    s
+                  </motion.span>
+                  <motion.span
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotateZ: [0, 2, -2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.6
+                    }}
+                    className="inline-block"
+                  >
+                    t
+                  </motion.span>
+                  <motion.span
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotateZ: [0, -2, 2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.7
+                    }}
+                    className="inline-block"
+                  >
+                    e
+                  </motion.span>
+                  <motion.span
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotateZ: [0, 2, -2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.8
+                    }}
+                    className="inline-block"
+                  >
+                    m
+                  </motion.span>
+                  <motion.span
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotateZ: [0, -2, 2, 0]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.9
+                    }}
+                    className="inline-block"
+                  >
+                    s
+                  </motion.span>
+                </motion.h1>
                 <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
+                  animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute -top-8 -right-8"
                 >
@@ -145,8 +349,38 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.9 }}
               className="text-xl md:text-2xl lg:text-3xl text-green-50/90 max-w-3xl mx-auto leading-relaxed font-light"
             >
-              Harness the power of <span className="font-semibold text-green-300">AI</span> to identify plants, track invasive species, and discover edible native treasures. 
-              <span className="block mt-2 text-green-200">Join thousands of conservation heroes making a difference! 🌿</span>
+              Harness the power of <motion.span 
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  textShadow: [
+                    "0 0 8px rgba(134, 239, 172, 0.5)",
+                    "0 0 20px rgba(134, 239, 172, 0.8)",
+                    "0 0 8px rgba(134, 239, 172, 0.5)"
+                  ]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="inline-block font-bold text-green-300"
+              >
+                AI
+              </motion.span> to identify plants, track invasive species, and discover edible native treasures. 
+              <motion.span 
+                animate={{ 
+                  x: [0, 5, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+                className="block mt-2 text-green-200"
+              >
+                Join thousands of conservation heroes making a difference! 🌿
+              </motion.span>
             </motion.p>
             
             {/* CTA Buttons with hover animations */}
@@ -381,53 +615,53 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="group relative overflow-hidden border-2 hover-lift glass-card animate-scale-in">
+            <Card className="group relative overflow-hidden border-2 hover-lift glass-card animate-scale-in bg-white/95 dark:bg-gray-900/80">
               <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl group-hover:bg-accent/20 transition-all duration-500" />
               <CardContent className="relative pt-8 text-center">
                 <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-accent to-accent/50 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
                   <Camera className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-foreground">AI Identification</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">AI Identification</h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   Upload or capture photos to instantly identify plants with advanced AI technology
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="group relative overflow-hidden border-2 hover-lift glass-card animate-scale-in" style={{ animationDelay: '0.1s' }}>
+            <Card className="group relative overflow-hidden border-2 hover-lift glass-card animate-scale-in bg-white/95 dark:bg-gray-900/80" style={{ animationDelay: '0.1s' }}>
               <div className="absolute top-0 right-0 w-32 h-32 bg-destructive/10 rounded-full blur-2xl group-hover:bg-destructive/20 transition-all duration-500" />
               <CardContent className="relative pt-8 text-center">
                 <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-destructive to-red-400 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
                   <Shield className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-foreground">Report Invasives</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Report Invasives</h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   Help track invasive species with GPS-enabled sighting reports
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="group relative overflow-hidden border-2 hover-lift glass-card animate-scale-in" style={{ animationDelay: '0.2s' }}>
+            <Card className="group relative overflow-hidden border-2 hover-lift glass-card animate-scale-in bg-white/95 dark:bg-gray-900/80" style={{ animationDelay: '0.2s' }}>
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-500" />
               <CardContent className="relative pt-8 text-center">
                 <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary to-emerald-400 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
                   <BookOpen className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-foreground">Wild Recipes</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Wild Recipes</h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   Discover chef-curated recipes for delicious edible native plants
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="group relative overflow-hidden border-2 hover-lift glass-card animate-scale-in" style={{ animationDelay: '0.3s' }}>
+            <Card className="group relative overflow-hidden border-2 hover-lift glass-card animate-scale-in bg-white/95 dark:bg-gray-900/80" style={{ animationDelay: '0.3s' }}>
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all duration-500" />
               <CardContent className="relative pt-8 text-center">
                 <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-400 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
                   <Map className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-foreground">Interactive Map</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Interactive Map</h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   View invasive species sightings on a live interactive map
                 </p>
               </CardContent>

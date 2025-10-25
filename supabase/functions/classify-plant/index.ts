@@ -20,10 +20,10 @@ serve(async (req) => {
 
     console.log(`Processing classification for image: ${imagePath}`);
     
-    // Note: LOVABLE_API_KEY is optional for the demo mock classification
+    // Note: AI_API_KEY is optional for the demo mock classification
     // In production, you would use a real AI model API
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (LOVABLE_API_KEY) {
+    const AI_API_KEY = Deno.env.get("AI_API_KEY");
+    if (AI_API_KEY) {
       console.log("API key configured for production use");
     } else {
       console.log("Using mock classification (no API key configured)");

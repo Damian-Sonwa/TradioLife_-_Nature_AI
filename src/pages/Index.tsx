@@ -239,7 +239,7 @@ const Index = () => {
       </section>
 
       {/* Plant Gallery Section - Enhanced with Animations */}
-      <section className="py-24 bg-gradient-to-b from-emerald-50 via-green-50 to-teal-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <section className="py-24 bg-gradient-to-b from-emerald-50 via-green-50 to-teal-50 dark:from-emerald-950/30 dark:via-green-950/30 dark:to-teal-950/30">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -248,10 +248,10 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16 space-y-4"
           >
-            <h2 className="text-5xl md:text-6xl font-bold text-foreground">
-              Discover Plant <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Varieties</span>
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white">
+              Discover Plant <span className="bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent">Varieties</span>
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
               From vibrant wildflowers to edible native plants, explore the incredible biodiversity around you 🌸
             </p>
           </motion.div>
@@ -365,17 +365,17 @@ const Index = () => {
       </section>
 
       {/* Features Section - Enhanced */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden bg-white dark:bg-gray-950">
         {/* Background gradient blobs */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-green-500/5 dark:bg-green-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl" />
         
         <div className="container relative mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-foreground">
-              Powerful <span className="gradient-text">Features</span>
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white">
+              Powerful <span className="bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent">Features</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
               Everything you need to identify, track, and learn about plants
             </p>
           </div>
@@ -437,24 +437,28 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-b from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
             Ready to Make a Difference?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Join our community of environmental stewards using AI to protect native ecosystems
           </p>
-          <Button asChild size="lg" className="text-lg">
+          <Button asChild size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white">
             <Link to="/auth">Start Identifying Plants</Link>
           </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2025 TradioLife. Protecting ecosystems through technology.</p>
+      <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="text-center space-y-4">
+            <p className="text-lg font-semibold">TradioLife - Protecting Ecosystems Through Technology</p>
+            <p className="text-sm text-gray-400">Built with ❤️ by <a href="https://github.com/Damian-Sonwa" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 transition-colors">damistackcode</a></p>
+            <p className="text-sm text-gray-500">&copy; 2025 TradioLife. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>
